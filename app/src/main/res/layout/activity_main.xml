@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.arke.transactions.signin.LoginViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_login_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:background="@drawable/icon_login_logo"
+            android:contentDescription="@null"
+            bind:layout_constraintBottom_toTopOf="@+id/layout_et_name"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layout_et_name"
+            android:layout_width="296dp"
+            android:layout_height="wrap_content"
+            bind:hintTextAppearance="@style/EditHint"
+            bind:layout_constraintBottom_toTopOf="@+id/layout_et_password"
+            bind:layout_constraintEnd_toEndOf="@+id/img_login_logo"
+            bind:layout_constraintStart_toStartOf="@+id/img_login_logo"
+            bind:layout_constraintTop_toBottomOf="@+id/img_login_logo">
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/icon_edit_user"
+                android:gravity="center_vertical"
+                android:hint="@string/username"
+                android:inputType="number"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:text="@={vm.name}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                bind:errorhint="@{vm.nameInvalidMessage}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layout_et_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            bind:hintTextAppearance="@style/EditHint"
+            bind:layout_constraintBottom_toTopOf="@+id/btn_login"
+            bind:layout_constraintEnd_toEndOf="@+id/layout_et_name"
+            bind:layout_constraintStart_toStartOf="@+id/layout_et_name"
+            bind:layout_constraintTop_toBottomOf="@+id/layout_et_name">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/icon_edit_password"
+                android:gravity="center_vertical"
+                android:hint="@string/password"
+                android:imeActionId="@integer/key_sign"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionDone"
+                android:inputType="numberPassword"
+                android:maxLength="8"
+                android:maxLines="1"
+                android:text="@={vm.password}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                bind:errorhint="@{vm.passwordInvalidMessage}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@color/theme"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            bind:layout_constraintBottom_toTopOf="@+id/guideline"
+            bind:layout_constraintEnd_toEndOf="@+id/layout_et_password"
+            bind:layout_constraintStart_toStartOf="@+id/layout_et_password"
+            bind:layout_constraintTop_toBottomOf="@+id/layout_et_password" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            bind:layout_constraintGuide_percent="0.68" />
+
+        <ImageView
+            android:id="@+id/img_login_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_login_bottom"
+            android:contentDescription="@null"
+            android:elevation="1dp"
+            bind:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:elevation="2dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
